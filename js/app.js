@@ -12,7 +12,7 @@
 
   // URL Web App Google Apps Script (akhiran /exec).
   // Ganti dengan URL hasil deploy Apps Script Anda.
-  const GAS_URL = 'https://script.google.com/macros/s/AKfycbyxnsodMuegBW-aDGE1VOFkApBvSLq0vpge0OW5LQBjcvH67A8Tqy056t2Hjhb8US-UBg/exec';
+  const GAS_URL = 'https://script.google.com/macros/s/AKfycbwF0hIwYuGqTL_bEHIDNoygSauYp3yNHE8p_VjrF-D2ZeJ-waGSaUaFlSuHtH-78-BZOQ/exec';
 
   // Informasi kajian — cukup ubah nilai di sini.
   const INFO_KAJIAN = {
@@ -176,7 +176,12 @@
       showToast('success', 'Berhasil terkirim', 'Pertanyaan Anda telah disampaikan. Jazakallahu khairan.');
     } catch (err) {
       console.error('Gagal mengirim:', err);
-      showToast('error', 'Gagal mengirim', 'Terjadi kendala koneksi. Silakan coba lagi.');
+      // Tampilkan penyebab sebenarnya supaya mudah didiagnosis.
+      var detail = (err && err.message) ? err.message : 'Terjadi kendala koneksi.';
+      if (detail === 'Failed to fetch' || /NetworkError|load failed/i.test(detail)) {
+        detail = 'Tidak dapat terhubung ke server (kemungkinan CORS / akses deployment belum "Anyone").';
+      }
+      showToast('error', 'Gagal mengirim', detail + ' Silakan coba lagi.');
     } finally {
       setLoading(false);
     }
