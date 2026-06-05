@@ -13,33 +13,6 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* ---------- Logo wordmark "muslimsolo.id" ---------- */
-.brand-logo {
-  display: inline-block;
-  font-family: 'Baloo 2', system-ui, sans-serif;
-  font-weight: 800;
-  font-size: 2rem;            /* ~32px di mobile */
-  line-height: 1;
-  letter-spacing: -0.5px;
-  color: #21365e;             /* navy khas logo */
-  /* Outline putih di belakang teks (paint-order: stroke dulu) */
-  -webkit-text-stroke: 5px #ffffff;
-  paint-order: stroke fill;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-}
-
-@media (min-width: 640px) {
-  .brand-logo {
-    font-size: 2.5rem;        /* lebih besar di desktop */
-    -webkit-text-stroke-width: 6px;
-  }
-}
-
-/* Bagian "solo" dibuat miring seperti logo asli */
-.brand-logo-italic {
-  font-style: italic;
-}
-
 /* Honeypot anti-spam: benar-benar tersembunyi dari user & screen reader,
    tapi tetap ada di DOM agar bot terjebak mengisinya. */
 .hp-field {

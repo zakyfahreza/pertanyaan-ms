@@ -12,7 +12,7 @@
 
   // URL Web App Google Apps Script (akhiran /exec).
   // Ganti dengan URL hasil deploy Apps Script Anda.
-  const GAS_URL = 'https://script.google.com/macros/s/AKfycbwxWQytYprPL4CBKu-3dIvA7_0TaK4mHBLHyg4XP5iTswlQa1kpNgcg-A9EswE5KRubjA/exec';
+  const GAS_URL = 'https://script.google.com/macros/s/AKfycbyxnsodMuegBW-aDGE1VOFkApBvSLq0vpge0OW5LQBjcvH67A8Tqy056t2Hjhb8US-UBg/exec';
 
   // Informasi kajian — cukup ubah nilai di sini.
   const INFO_KAJIAN = {
@@ -186,17 +186,33 @@
      8. KIRIM DATA KE GOOGLE APPS SCRIPT
      =============================================================== */
   async function kirimData(payload) {
-    // Catatan:
-    // Apps Script Web App memerlukan mode 'no-cors' bila tidak mengatur
-    // header CORS. Dengan 'no-cors' kita tidak bisa membaca response,
-    // sehingga keberhasilan diasumsikan bila request tidak melempar error.
-    // Body dikirim sebagai text/plain agar tidak memicu preflight.
-    await fetch(GAS_URL, {
+    // Body dikirim sebagai text/plain = "simple request" sehingga tidak
+    // memicu preflight CORS. Tanpa 'no-cors', kita BISA membaca respons,
+    // jadi sukses hanya ditampilkan bila server benar-benar membalas ok.
+    const res = await fetch(GAS_URL, {
       method: 'POST',
-      mode: 'no-cors',
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: JSON.stringify(payload),
+      redirect: 'follow',
     });
+
+    if (!res.ok) {
+      throw new Error('HTTP ' + res.status);
+    }
+
+    // Apps Script mengembalikan JSON, mis. { status: 'ok' }
+    const text = await res.text();
+    let data;
+    try {
+      data = JSON.parse(text);
+    } catch (e) {
+      throw new Error('Respons server tidak valid: ' + text.slice(0, 120));
+    }
+
+    if (data.status !== 'ok') {
+      throw new Error(data.message || 'Server menolak data.');
+    }
+    return data;
   }
 
   /* ===============================================================
