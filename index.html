@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kolom Tanya Ustadz — Muslim Solo</title>
+  <meta name="description" content="Tuliskan pertanyaan Anda untuk disampaikan kepada ustadz saat sesi tanya jawab kajian Muslim Solo." />
+
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            // Hijau tua khas dakwah
+            brand: {
+              50:  '#f0f7f3',
+              100: '#dcebe2',
+              200: '#bcd8c8',
+              300: '#8fbca5',
+              400: '#5d9a7d',
+              500: '#3d7d60',
+              600: '#2c624b',
+              700: '#234e3c',
+              800: '#1d3f31',
+              900: '#0f3d2e',
+              950: '#072018',
+            },
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Baloo+2:wght@700;800&family=Amiri:wght@700&display=swap" rel="stylesheet" />
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="min-h-screen bg-gradient-to-b from-brand-50 via-white to-brand-50 text-brand-950 antialiased">
+
+  <!-- Wrapper utama: card di tengah halaman -->
+  <main class="flex min-h-screen items-start justify-center px-4 py-8 sm:items-center sm:py-12">
+    <div class="w-full max-w-md">
+
+      <!-- Card -->
+      <div class="overflow-hidden rounded-3xl bg-white shadow-xl shadow-brand-900/10 ring-1 ring-brand-900/5">
+
+        <!-- Header -->
+        <header class="bg-brand-900 px-6 pb-8 pt-9 text-center text-white">
+          <!-- Logo wordmark muslimsolo.id -->
+          <div class="brand-logo mx-auto mb-3" aria-label="muslimsolo.id">muslim<span class="brand-logo-italic">solo</span>.id</div>
+
+          <h1 class="mt-2 text-3xl font-extrabold leading-tight">Kolom Tanya Ustadz</h1>
+          <p class="mx-auto mt-3 max-w-xs text-sm leading-relaxed text-brand-100/90">
+            Silakan tuliskan pertanyaan Anda untuk disampaikan kepada ustadz saat sesi tanya jawab.
+          </p>
+        </header>
+
+        <!-- Section Informasi Kajian -->
+        <section class="border-b border-brand-100 bg-brand-50/60 px-6 py-5">
+          <h2 class="mb-3 text-xs font-bold uppercase tracking-wider text-brand-600">Informasi Kajian</h2>
+          <dl class="space-y-2.5 text-sm">
+            <div class="flex items-start gap-3">
+              <svg class="mt-0.5 h-4 w-4 flex-none text-brand-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              <div>
+                <dt class="text-brand-500">Tema Kajian</dt>
+                <dd id="info-tema" class="font-semibold text-brand-900">—</dd>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <svg class="mt-0.5 h-4 w-4 flex-none text-brand-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <div>
+                <dt class="text-brand-500">Pemateri</dt>
+                <dd id="info-pemateri" class="font-semibold text-brand-900">—</dd>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <svg class="mt-0.5 h-4 w-4 flex-none text-brand-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <div>
+                <dt class="text-brand-500">Waktu</dt>
+                <dd id="info-waktu" class="font-semibold text-brand-900">—</dd>
+              </div>
+            </div>
+          </dl>
+        </section>
+
+        <!-- Form -->
+        <div class="px-6 py-6">
+          <form id="form-tanya" novalidate>
+            <label for="pertanyaan" class="mb-2 block text-sm font-semibold text-brand-900">
+              Pertanyaan Anda <span class="text-red-500">*</span>
+            </label>
+
+            <textarea
+              id="pertanyaan"
+              name="pertanyaan"
+              rows="5"
+              maxlength="500"
+              required
+              placeholder="Tuliskan pertanyaan Anda di sini..."
+              class="w-full resize-none rounded-2xl border border-brand-200 bg-brand-50/40 px-4 py-3 text-sm leading-relaxed text-brand-950 placeholder:text-brand-400 transition focus:border-brand-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-500/15"
+            ></textarea>
+
+            <!-- Baris bawah textarea: error + counter -->
+            <div class="mt-2 flex items-center justify-between">
+              <p id="error-pertanyaan" class="text-xs font-medium text-red-500" role="alert"></p>
+              <p class="text-xs text-brand-400">
+                <span id="char-count">0</span>/500
+              </p>
+            </div>
+
+            <!-- Honeypot anti spam (disembunyikan dari user) -->
+            <div class="hp-field" aria-hidden="true">
+              <label for="website">Jangan isi kolom ini</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <!-- Tombol Kirim -->
+            <button
+              type="submit"
+              id="btn-submit"
+              class="mt-5 flex w-full items-center justify-center gap-2 rounded-2xl bg-brand-700 px-5 py-3.5 text-sm font-bold text-white shadow-lg shadow-brand-900/20 transition hover:bg-brand-800 focus:outline-none focus:ring-4 focus:ring-brand-500/30 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              <span id="btn-text">Kirim Pertanyaan</span>
+              <svg id="btn-spinner" class="hidden h-5 w-5 animate-spin text-white" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-90" fill="currentColor" d="M4 12a8 8 0 0 1 8-8v4a4 4 0 0 0-4 4H4z"></path>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Footer kecil -->
+      <p class="mt-6 text-center text-xs text-brand-500">
+        &copy; <span id="year"></span> Muslim Solo · Dibuat dengan ❤️ untuk dakwah
+      </p>
+    </div>
+  </main>
+
+  <!-- Toast container -->
+  <div id="toast-container" class="pointer-events-none fixed inset-x-0 top-4 z-50 flex flex-col items-center gap-2 px-4"></div>
+
+  <!-- App script -->
+  <script src="js/app.js"></script>
+</body>
+</html>
