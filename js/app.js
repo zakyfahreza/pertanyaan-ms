@@ -12,7 +12,7 @@
 
   // URL Web App Google Apps Script (akhiran /exec).
   // Ganti dengan URL hasil deploy Apps Script Anda.
-  const GAS_URL = 'https://script.google.com/macros/s/AKfycbwF0hIwYuGqTL_bEHIDNoygSauYp3yNHE8p_VjrF-D2ZeJ-waGSaUaFlSuHtH-78-BZOQ/exec';
+  const GAS_URL = 'https://script.google.com/macros/s/AKfycbxl75QwcvE_q1FblA5if3Fub4FXYtFQgDDiwSo-t98W3i6ez7N1jYPCF_pOOkfOb_falQ/exec';
 
   // Informasi kajian — cukup ubah nilai di sini.
   const INFO_KAJIAN = {
