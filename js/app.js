@@ -16,9 +16,9 @@
 
   // Informasi kajian — cukup ubah nilai di sini.
   const INFO_KAJIAN = {
-    tema: 'Meniti Jalan Keselamatan',
-    pemateri: 'Ustadz Abu Farhan Furaihan',
-    waktu: 'Sabtu, 6 Juni 2026 · 9.30 s.d. Selesai',
+    tema: 'Begini Seharusnya Kamu Menuntut Ilmu',
+    pemateri: 'Ustadz Abdurrahman Al Amiry',
+    waktu: 'Ahad, 7 Juni 2026 · Bada dzhuhur s.d. Selesai',
   };
 
   // Pengaturan lain
